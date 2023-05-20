@@ -1,6 +1,6 @@
 import json
 from models.tournament import Tournament
-from models.player import Player  # <-- Add this import statement
+from models.player import Player
 
 def create_tournament(name, location, start_date, end_date, time_control, number_of_rounds, current_round_number, players, rounds, description):
     tournament = Tournament(name, location, start_date, end_date, time_control, number_of_rounds, current_round_number, players, rounds, description)
@@ -48,3 +48,26 @@ def load_tournaments(file_path='data/tournaments/tournaments.json'):
         pass
 
     return tournaments
+
+def display_tournaments(tournaments):
+    for tournament in tournaments:
+        print("Tournament Name:", tournament.name)
+        print("Location:", tournament.location)
+        print("Start Date:", tournament.start_date)
+        print("End Date:", tournament.end_date)
+        print("Time Control:", tournament.time_control)
+        print("Number of Rounds:", tournament.number_of_rounds)
+        print("Current Round Number:", tournament.current_round_number)
+        print("Players:")
+        for player in tournament.players:
+            print("- Name:", player.first_name, player.last_name)
+            print("  Date of Birth:", player.date_of_birth)
+            print("  Score:", player.score)
+        print("Rounds:")
+        for i, round in enumerate(tournament.rounds):
+            print("- Round", i + 1)
+            print("  Start Date:", round.start_date)
+            print("  End Date:", round.end_date)
+            # Print other round details
+        print("Description:", tournament.description)
+        print()
