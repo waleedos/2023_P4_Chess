@@ -1,0 +1,14 @@
+colorama==0.4.6
+datetime2==0.9.4
+flake8==6.0.0
+flake8-html==0.4.3
+Jinja2==3.1.2
+json2json==0.1.0
+MarkupSafe==2.1.2
+mccabe==0.7.0
+pycodestyle==2.10.0
+pyflakes==3.0.1
+Pygments==2.15.1
+simplejson==3.19.1
+SQLite3-0611==0.0.1
+tinydb==4.7.1
