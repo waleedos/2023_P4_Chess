@@ -5,12 +5,12 @@ def create_player(last_name, first_name, date_of_birth, score):
     player = Player(last_name, first_name, date_of_birth, score)
     return player
 
-def add_player(player, file_path):
+def add_player(player, file_path='data/players/players.json'):
     players = load_players(file_path)
     players.append(player)
     save_players(players, file_path)
 
-def save_players(players, file_path):
+def save_players(players, file_path='data/players/players.json'):
     player_data = []
     for player in players:
         player_data.append({
@@ -23,7 +23,7 @@ def save_players(players, file_path):
     with open(file_path, 'w') as file:
         json.dump(player_data, file)
 
-def load_players(file_path):
+def load_players(file_path='data/players/players.json'):
     players = []
     try:
         with open(file_path, 'r') as file:
@@ -33,7 +33,6 @@ def load_players(file_path):
             player = Player(data['last_name'], data['first_name'], data['date_of_birth'], data['score'])
             players.append(player)
     except (FileNotFoundError, json.JSONDecodeError):
-        # Si le fichier players.json n'existe pas ou est vide, retourne une liste vide de joueurs
         pass
 
     return players

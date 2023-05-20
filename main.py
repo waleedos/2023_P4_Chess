@@ -18,14 +18,14 @@ def main():
             player = player_controller.create_player(last_name, first_name, date_of_birth, score)
 
             # ajoutez le joueur à la liste des joueurs et sauvegardez dans le fichier JSON
-            player_controller.add_player(player, 'players.json')
+            player_controller.add_player(player, 'data/players/players.json')
 
             # affichez le joueur
             player_view.display_player(player)
 
         elif action == "2":
             # chargement des joueurs à partir du fichier JSON et affichage
-            loaded_players = player_controller.load_players('players.json')
+            loaded_players = player_controller.load_players('data/players/players.json')
             player_view.display_players(loaded_players)
 
         elif action.lower() == "q":
