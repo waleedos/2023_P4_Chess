@@ -1,5 +1,7 @@
 import json
 import datetime
+from models.round import Round
+from models.player import Player
 
 class Tournament:
     def __init__(self, name, location, start_date, end_date, rounds=4):
