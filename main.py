@@ -3,7 +3,8 @@
 from os import path
 from src.models.common import folders_check
 from src.models.player import Players
-
+from src.models.tournament import Tournaments
+from src.controllers.main import MainController
 
 def main():
     if path.exists("./src/"):
