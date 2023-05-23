@@ -1,3 +1,4 @@
+# Fichier /views/common.py
 def top_bottom(function):
     """design pattern decorator :
     add the top and the bottom to a menu"""

@@ -1,3 +1,4 @@
+# Fichier /views/homepage.py
 from .common import top_bottom, get_choice
 
 
