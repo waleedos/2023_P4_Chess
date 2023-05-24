@@ -1,25 +1,40 @@
 {
     "players": [
         {
-            "last_name": "Doe",
-            "first_name": "John",
-            "birthdate": "01/01/1990",
+            "last_name": "ALKHABOU",
+            "first_name": "ALWALID",
+            "birthdate": "13/04/1970",
             "gender": "M",
-            "rank": 1500
+            "rank": 1920,
+            "ChessId": "AB65295",
+            "tournament_points": 0
         },
         {
-            "last_name": "Smith",
-            "first_name": "Jane",
-            "birthdate": "10/05/1992",
-            "gender": "F",
-            "rank": 1400
+            "last_name": "ZLATAN",
+            "first_name": "Ibrahimovich",
+            "birthdate": "13/04/1970",
+            "gender": "m",
+            "rank": 1522,
+            "ChessId": "AB98765",
+            "tournament_points": 0
         },
         {
-            "last_name": "Doe",
-            "first_name": "John",
-            "birthdate": "01/01/1990",
+            "last_name": "HOLLAND",
+            "first_name": "Fran\u00e7ois",
+            "birthdate": "14/12/1958",
             "gender": "M",
-            "rank": 1500
+            "rank": 1360,
+            "ChessId": "AB54201",
+            "tournament_points": 0
+        },
+        {
+            "last_name": "FORMIDABLE",
+            "first_name": "George",
+            "birthdate": "02/06/1981",
+            "gender": "M",
+            "rank": 2630,
+            "ChessId": "AB98989",
+            "tournament_points": 0
         }
     ]
 }
