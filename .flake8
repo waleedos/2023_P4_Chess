@@ -1,7 +1,0 @@
-[flake8]
-exclude = env, data, .git, .vscode, __pycache__
-max-line-length = 119
-
-# Format de sortie en HTML
-format = html
-htmldir = flake8_report
