@@ -1,0 +1,18 @@
+{
+    "players": [
+        {
+            "last_name": "Doe",
+            "first_name": "John",
+            "birthdate": "01/01/1990",
+            "gender": "M",
+            "rank": 1500
+        },
+        {
+            "last_name": "Smith",
+            "first_name": "Jane",
+            "birthdate": "10/05/1992",
+            "gender": "F",
+            "rank": 1400
+        }
+    ]
+}
