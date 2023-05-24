@@ -1,5 +1,6 @@
 from controllers.player_controller import add_player
 from models.player import Player
+from colorama import init, Fore, Style  # Assurez-vous que cette ligne est présente
 
 # Ajout d'un joueur
 def add_new_player():
@@ -21,10 +22,10 @@ def add_new_player():
     
     player = Player(**player_data)  # Création d'une instance de la classe Player
     add_player(player)
-    print("Le joueur a été ajouté avec succès !")
 
 # Menu principal
 def main_menu():
+    init()  # Initialisation de colorama
     print("===== MENU PRINCIPAL =====")
     print("1. Ajouter un joueur")
     print("2. Quitter")
