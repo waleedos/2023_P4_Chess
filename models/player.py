@@ -7,6 +7,11 @@ class Player:
         self.rank = rank
         self.ChessId = ChessId
         self.tournament_points = tournament_points
+
+
+    def __str__(self):
+        return f"Nom: {self.last_name}, Prénom: {self.first_name}, Date de naissance: {self.birthdate}, Genre: {self.gender}, Classement: {self.rank}, ChessId: {self.ChessId}"    
+    
     
     def to_dict(self):
         return {

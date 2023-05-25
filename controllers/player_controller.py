@@ -3,6 +3,7 @@ import json
 from models.player import Player
 from views.player_view import display_players
 
+
 def add_player(player_info):
     player = Player(
         last_name=player_info.last_name,
@@ -17,6 +18,7 @@ def add_player(player_info):
     save_players(players)
     display_player_table(players)
 
+
 def load_players():
     try:
         with open('data/players.json', 'r') as file:
@@ -28,10 +30,12 @@ def load_players():
     except FileNotFoundError:
         return []
 
+
 def save_players(players):
     data = {"players": [player.to_dict() for player in players]}
     with open('data/players.json', 'w') as file:
         json.dump(data, file, indent=4)
+
 
 def display_player_table(players):
     display_players(players)

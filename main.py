@@ -1,6 +1,7 @@
-from controllers.player_controller import add_player
+from controllers.player_controller import add_player, load_players
 from models.player import Player
 from colorama import init, Fore, Style  # Assurez-vous que cette ligne est présente
+from views.player_view import display_all_players
 
 # Ajout d'un joueur
 def add_new_player():
@@ -23,20 +24,34 @@ def add_new_player():
     player = Player(**player_data)  # Création d'une instance de la classe Player
     add_player(player)
 
+
 # Menu principal
 def main_menu():
     init()  # Initialisation de colorama
     print("===== MENU PRINCIPAL =====")
     print("1. Ajouter un joueur")
-    print("2. Quitter")
+    print("2. Afficher tous les joueurs")
+    print("3. Quitter")
     choice = input("Choix : ")
     
     if choice == "1":
         add_new_player()
     elif choice == "2":
+        display_all_players_menu()
+    elif choice == "3":
         print("Au revoir !")
     else:
         print("Choix invalide, veuillez réessayer.")
+
+
+def display_all_players_menu():
+    players = load_players()
+    if players:
+        print("Voici tous les joueurs enregistrés :")
+        display_all_players(players)
+    else:
+        print("Aucun joueur enregistré.")
+
 
 # Point d'entrée du programme
 if __name__ == "__main__":
