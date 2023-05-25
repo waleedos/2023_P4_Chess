@@ -54,4 +54,65 @@ def display_all_players(players):
         print(Fore.RED + "                        Voici tous les joueurs enregistrés!" + "\n\n" + Style.RESET_ALL)
     else:
         print("Aucun joueur enregistré.")
-                
+
+
+def get_new_player_info():
+    last_name = input("Nom : ")
+    first_name = input("Prénom : ")
+    birthdate = input("Date de naissance (jj/mm/aaaa) : ")
+    gender = input("Genre (M ou F) : ")
+    rank = int(input("Classement : "))
+    ChessId = input("ChessId (AB12345) : ")
+    
+    player_data = {
+        "last_name": last_name,
+        "first_name": first_name,
+        "birthdate": birthdate,
+        "gender": gender,
+        "rank": rank,
+        "ChessId": ChessId
+    }
+    
+    return player_data
+
+
+def get_updated_player_info(player):
+    last_name = input("Nom [" + player.last_name + "]: ")
+    first_name = input("Prénom [" + player.first_name + "]: ")
+    birthdate = input("Date de naissance (jj/mm/aaaa) [" + player.birthdate + "]: ")
+    gender = input("Genre (M ou F) [" + player.gender + "]: ")
+    rank = input("Classement [" + str(player.rank) + "]: ")
+    chess_id_new = input("ChessId (AB12345) [" + player.ChessId + "]: ")
+    
+    new_player_data = {
+        "last_name": last_name,
+        "first_name": first_name,
+        "birthdate": birthdate,
+        "gender": gender,
+        "rank": rank,
+        "ChessId": chess_id_new
+    }
+    
+    return new_player_data
+
+
+def display_all_players_menu(players):
+    if players:
+        print("Voici tous les joueurs enregistrés :")
+        display_all_players(players)
+    else:
+        print("Aucun joueur enregistré.")
+
+
+def display_update_confirmation():
+    print(Fore.RED + "\nLes nouvelles informations du joueur ont été prises en compte.\n" + Style.RESET_ALL)
+
+
+def get_player_id_to_delete():
+    chess_id = input("Entrez l'ID du joueur à supprimer (ChessId) : ")
+    return chess_id
+
+
+def display_delete_confirmation():
+    print(Fore.RED + "\nLe joueur séléctionné vient d'être supprimé.\n" + Fore.RESET)
+

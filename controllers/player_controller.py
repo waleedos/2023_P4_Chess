@@ -1,22 +1,15 @@
-# /controllers/player_controller.py
+# player_controller.Player
+ 
 import json
 from models.player import Player
 from views.player_view import display_players
 
 
-def add_player(player_info):
-    player = Player(
-        last_name=player_info.last_name,
-        first_name=player_info.first_name,
-        birthdate=player_info.birthdate,
-        gender=player_info.gender,
-        rank=player_info.rank,
-        ChessId=player_info.ChessId
-    )
+def add_player(player):
     players = load_players()
     players.append(player)
     save_players(players)
-    display_player_table(players)
+    display_players(players)
 
 
 def load_players():
@@ -37,10 +30,6 @@ def save_players(players):
         json.dump(data, file, indent=4)
 
 
-def display_player_table(players):
-    display_players(players)
-
-
 def get_player_by_id(chess_id):
     players = load_players()
     for player in players:
@@ -57,4 +46,38 @@ def update_player(updated_player):
             save_players(players)
             return
     print("Le joueur à mettre à jour n'a pas été trouvé.")
+
+
+def create_new_player(player_data):
+    player = Player(**player_data)
+    add_player(player)
+
+
+def edit_existing_player(chess_id, new_player_data):
+    player = get_player_by_id(chess_id)
+    
+    if new_player_data["last_name"] != "":
+        player.last_name = new_player_data["last_name"]
+    if new_player_data["first_name"] != "":
+        player.first_name = new_player_data["first_name"]
+    if new_player_data["birthdate"] != "":
+        player.birthdate = new_player_data["birthdate"]
+    if new_player_data["gender"] != "":
+        player.gender = new_player_data["gender"]
+    if new_player_data["rank"] != "":
+        player.rank = int(new_player_data["rank"])
+    if new_player_data["ChessId"] != "":
+        player.ChessId = new_player_data["ChessId"]
+    
+    update_player(player)
+
+
+def delete_player(chess_id):
+    players = load_players()
+    for i, player in enumerate(players):
+        if player.ChessId == chess_id:
+            del players[i]
+            save_players(players)
+            return
+    print("Le joueur à supprimer n'a pas été trouvé.")
 
