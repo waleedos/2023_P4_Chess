@@ -1,17 +1,17 @@
 {
     "players": [
         {
-            "last_name": "KHABOU",
+            "last_name": "ALKHABOU",
             "first_name": "OUALID",
             "birthdate": "14/05/2012",
             "gender": "M",
-            "rank": 1625,
+            "rank": 1700,
             "ChessId": "AB99999",
             "tournament_points": 0
         },
         {
             "last_name": "SARBEJI",
-            "first_name": "MOURAD",
+            "first_name": "KHEIREDDINE",
             "birthdate": "15/12/1960",
             "gender": "M",
             "rank": 2350,

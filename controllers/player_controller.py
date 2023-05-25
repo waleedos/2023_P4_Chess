@@ -39,3 +39,22 @@ def save_players(players):
 
 def display_player_table(players):
     display_players(players)
+
+
+def get_player_by_id(chess_id):
+    players = load_players()
+    for player in players:
+        if player.ChessId == chess_id:
+            return player
+    return None
+
+
+def update_player(updated_player):
+    players = load_players()
+    for i, player in enumerate(players):
+        if player.ChessId == updated_player.ChessId:
+            players[i] = updated_player
+            save_players(players)
+            return
+    print("Le joueur à mettre à jour n'a pas été trouvé.")
+
