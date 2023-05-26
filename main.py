@@ -1,9 +1,10 @@
-# main.py
-from controllers.player_controller import create_new_player, load_players, edit_existing_player, get_player_by_id, delete_player
-from views.player_view import get_new_player_info, get_updated_player_info, display_all_players, display_update_confirmation, display_delete_confirmation, get_player_id_to_delete
-from colorama import init
+from colorama import init, Fore, Style
+from controllers.player_controller import create_new_player, load_players, edit_existing_player, delete_player
+from views.player_view import get_new_player_info, get_updated_player_info, get_player_id_to_delete, display_all_players
+from controllers.tournament_controller import create_new_tournament, load_tournaments
+from views.tournament_view import get_new_tournament_info, display_all_tournaments
 
-# Menu principal
+
 def main_menu():
     init()  # Initialisation de colorama
     while True:
@@ -12,9 +13,11 @@ def main_menu():
         print("2. Afficher tous les joueurs")
         print("3. Editer un joueur")
         print("4. Supprimer un joueur")
-        print("5. Quitter")
+        print("5. Créer un nouveau tournoi")
+        print("6. Afficher tous les tournois")
+        print("7. Quitter")
         choice = input("Choix : ")
-        
+
         if choice == "1":
             player_data = get_new_player_info()
             create_new_player(player_data)
@@ -35,12 +38,16 @@ def main_menu():
             delete_player(chess_id)
             display_delete_confirmation()
         elif choice == "5":
+            tournament_data = create_new_tournament()
+        elif choice == "6":
+            tournaments = load_tournaments()
+            display_all_tournaments(tournaments)
+        elif choice == "7":
             print("Au revoir !")
             break
         else:
             print("Choix invalide, veuillez réessayer.")
+            
 
-
-# Point d'entrée du programme
 if __name__ == "__main__":
     main_menu()

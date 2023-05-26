@@ -1,0 +1,34 @@
+{
+    "tournaments": [
+        {
+            "name": "ophiuhioguiog",
+            "location": "hiouhiogh",
+            "start_date": "22/06/2023",
+            "end_date": "30/06/2023",
+            "description": "jhigog oygo uyg ouyg",
+            "time_control": 2,
+            "rounds": 4,
+            "players": []
+        },
+        {
+            "name": "DERNIER TEST",
+            "location": "DERNIER",
+            "start_date": "15/06/2023",
+            "end_date": "25/06/2023",
+            "description": "Oui Test Dernier",
+            "time_control": 1,
+            "rounds": 4,
+            "players": []
+        },
+        {
+            "name": "Dernier Test",
+            "location": "TEST TEST",
+            "start_date": "14/08/2024",
+            "end_date": "30/08/2024",
+            "description": "SFAX",
+            "time_control": 3,
+            "rounds": 4,
+            "players": []
+        }
+    ]
+}
