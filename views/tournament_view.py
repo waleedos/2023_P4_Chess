@@ -2,6 +2,17 @@ from colorama import Fore, Style
 from tabulate import tabulate
 
 
+def get_time_control_description(time_control):
+    if time_control == 1:
+        return "bullet"
+    elif time_control == 2:
+        return "blitz"
+    elif time_control == 3:
+        return "coup rapide"
+    else:
+        return ""
+
+
 def get_new_tournament_info():
     name = input("Nom du tournoi : ")
     location = input("Lieu du tournoi : ")
@@ -39,7 +50,7 @@ def display_all_tournaments(tournaments):
                 "Début du tournoi": tournament.start_date,
                 "Fin du tournoi": tournament.end_date,
                 "Description": tournament.description,
-                "Contrôle du temps": tournament.time_control,
+                "Contrôle du temps": get_time_control_description(tournament.time_control),
                 "Nombre de tours": tournament.rounds,
                 "Joueurs participants": ", ".join(tournament.players)
             } for tournament in tournaments
