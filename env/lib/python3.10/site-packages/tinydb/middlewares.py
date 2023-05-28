@@ -2,6 +2,9 @@
 Contains the :class:`base class <tinydb.middlewares.Middleware>` for
 middlewares and implementations.
 """
+from typing import Optional
+
+from tinydb import Storage
 
 
 class Middleware:
@@ -15,9 +18,9 @@ class Middleware:
     constructor so the middleware chain can be configured properly.
     """
 
-    def __init__(self, storage_cls):
+    def __init__(self, storage_cls) -> None:
         self._storage_cls = storage_cls
-        self.storage = None
+        self.storage: Storage = None  # type: ignore
 
     def __call__(self, *args, **kwargs):
         """
@@ -48,10 +51,10 @@ class Middleware:
         be the storage (or Middleware) instance. Returning the instance is
         simple, but we also got the underlying (*real*) StorageClass as an
         __init__ argument that still is not an instance.
-        So, we initialize it in __call__ forwarding any arguments we recieve
+        So, we initialize it in __call__ forwarding any arguments we receive
         from TinyDB (``TinyDB(arg1, kwarg1=value, storage=...)``).
 
-        In case of nested Middlewares, calling the instance as if it was an
+        In case of nested Middlewares, calling the instance as if it was a
         class results in calling ``__call__`` what initializes the next
         nested Middleware that itself will initialize the next Middleware and
         so on.
@@ -63,7 +66,7 @@ class Middleware:
 
     def __getattr__(self, name):
         """
-        Forward all unknown attribute calls to the underlying storage so we
+        Forward all unknown attribute calls to the underlying storage, so we
         remain as transparent as possible.
         """
 
