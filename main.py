@@ -1,7 +1,7 @@
 # Voici le point d'entrée principal pour exécuter le programme CHESS TOURNAMENT
 
 from views.main_menu import MainMenu
-# Importation de la classe MainMenu depuis le fichier main_menu.py qui se trouve dans le dossier views. 
+# Importation de la classe MainMenu depuis le fichier main_menu.py qui se trouve dans le dossier views.
 
 
 def run():

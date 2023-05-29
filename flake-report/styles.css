@@ -251,6 +251,22 @@ img {
    vertical-align: -0.35em;
 }
 
+footer {
+   width: 100%;
+   text-align: center;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   background-color: #f8f8f8;
+   color: red;
+   font-weight: bold;
+   padding: 10px 0;
+}
+
+.footer-text {
+   margin: 0;
+}
+
 pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
