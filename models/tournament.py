@@ -40,13 +40,19 @@ class Tournament:
         # du tournoi.
 
     def create_players_pairs(self, current_round):
+        # définit la fonction create_players_pairs, qui prend deux paramètres : l'instance actuelle (représentée par
+        # self) et le round actuel (current_round).
 
         if current_round == 0:
             sorted_players = sorted(self.players, key=lambda x: x.rating, reverse=True)
+            # Si nous sommes au premier tour (current_round est 0), la liste des joueurs est triée par classement
+            # (rating) en ordre décroissant.
 
         else:
             sorted_players = []
             score_sorted_players = sorted(self.players, key=lambda x: x.total_score, reverse=True)
+            # Si nous ne sommes pas au premier tour, une nouvelle liste vide sorted_players est créée, et les joueurs
+            # sont triés par leur score total (total_score) en ordre décroissant.
 
             for i, player in enumerate(score_sorted_players):
                 try:
@@ -62,17 +68,27 @@ class Tournament:
                     sorted_players.append(lo_player)
                 except IndexError:
                     sorted_players.append(player)
+                    # Cela parcourt chaque joueur dans la liste triée par score. Si deux joueurs ont le même score
+                    # total, le joueur avec le classement le plus élevé est ajouté en premier à la liste
+                    # sorted_players. Cela garantit que les joueurs avec le même score total sont classés par
+                    # classement.
 
         first_half_players = sorted_players[len(sorted_players) // 2:]
         second_half_players = sorted_players[:len(sorted_players) // 2]
+        # Les joueurs sont ensuite divisés en deux moitiés : la première moitié (first_half_players) et la seconde
+        # moitié (second_half_players).
 
         players_pairs = []
+        # Une nouvelle liste vide players_pairs est créée pour stocker les paires de joueurs.
 
         for i, player in enumerate(first_half_players):
             a = 0
             while True:
                 try:
                     player_2 = second_half_players[i + a]
+                    # Pour chaque joueur de la première moitié, un autre joueur de la seconde moitié est choisi pour
+                    # former une paire. Si le joueur choisi a déjà joué avec le joueur actuel, un autre joueur de la
+                    # seconde moitié est choisi.
 
                 except IndexError:
                     player_2 = second_half_players[i]
@@ -81,22 +97,32 @@ class Tournament:
                     player.played_with.append(player_2)
                     player_2.played_with.append(player)
                     break
+                    # Si un IndexError est déclenché (ce qui signifie que nous avons dépassé les limites de la liste
+                    # second_half_players), le joueur initial de la seconde moitié est choisi, et une paire est formée
+                    # et ajoutée à la liste players_pairs. Chaque joueur est ensuite ajouté à la liste des joueurs
+                    # avec lesquels l'autre joueur a joué.
 
                 if player in player_2.played_with:
                     a += 1
                     continue
+                    # Si le joueur de la première moitié a déjà joué avec le joueur de la seconde moitié, un autre
+                    # joueur est choisi dans la seconde moitié.
 
                 else:
                     players_pairs.append((player, player_2))
                     player.played_with.append(player_2)
                     player_2.played_with.append(player)
                     break
+                    # Si le joueur de la première moitié n'a pas joué avec le joueur de la seconde moitié, une paire
+                    # est formée et ajoutée à la liste players_pairs. Chaque joueur est ensuite ajouté à la liste des
+                    # joueurs avec lesquels l'autre joueur a joué.
 
         return players_pairs
-        # La méthode create_players_pairs est utilisée pour créer les paires de joueurs pour un tour spécifique
-        # (current_round). La méthode utilise une logique complexe pour trier les joueurs en fonction de leur score
-        # total et de leur cote. Elle génère ensuite des paires de joueurs en s'assurant qu'ils n'ont pas déjà joué
-        # l'un contre l'autre. Les paires de joueurs sont renvoyées sous forme de liste.
+        # Enfin, la liste players_pairs contenant toutes les paires de joueurs est renvoyée.
+        # Pour conclusion, La méthode create_players_pairs est utilisée pour créer les paires de joueurs pour un tour
+        # spécifique (current_round). La méthode utilise une logique complexe pour trier les joueurs en fonction de
+        # leur score total et de leur cote. Elle génère ensuite des paires de joueurs en s'assurant qu'ils n'ont pas
+        # déjà joué l'un contre l'autre. Les paires de joueurs sont renvoyées sous forme de liste.
 
     def get_rankings(self, by_score=True):
 
