@@ -2,7 +2,7 @@
 # de base de données orienté document léger et simple pour Python. Il sert également à convertir les objets
 # sauvegardés sous forme sérialisée en leurs objets originaux.
 
-
+from colorama import Fore, Style, init
 from pathlib import Path
 from tinydb import TinyDB
 from tinydb import where
@@ -13,6 +13,8 @@ from models.match import Match
 # Importation des modules et des classes nécessaires. Path est une classe de pathlib qui est utilisée pour manipuler
 # les chemins de fichiers et de dossiers. TinyDB et where sont des modules de TinyDB utilisés pour interagir avec la
 # base de données. Les classes Player, Tournament, Round, et Match sont les modèles de données.
+
+init()
 
 
 def save_db(db_name, serialized_data):
@@ -25,7 +27,7 @@ def save_db(db_name, serialized_data):
         db = TinyDB("data/" + db_name + ".json")
 
     db.insert(serialized_data)
-    print(f"{serialized_data['name']} sauvegardé avec succès.")
+    print(f"{Fore.BLUE}{serialized_data['name']} sauvegardé avec succès.\n{Style.RESET_ALL}")                                    
     # Implementation de La fonction save_db prend un nom de base de données et des données sérialisées en entrée.
     # Elle crée d'abord un dossier nommé "data" si celui-ci n'existe pas déjà. Ensuite, elle essaie d'ouvrir la
     # base de données spécifiée. Si la base de données n'existe pas, elle la crée. Ensuite, elle insère les données

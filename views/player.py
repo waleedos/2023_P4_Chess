@@ -1,3 +1,6 @@
+from colorama import Fore, Style, init
+init()
+
 # importation de la classe View depuis le module views.view et la fonction load_db depuis le module
 # controller.database.
 from views.view import View
@@ -14,18 +17,18 @@ class CreatePlayer(View):
 
         firstname = input("Prénom du joueur :\n"
                           ">>> ")
-
+        
         birthday = self.get_user_entry(
             msg_display="Date de naissance (format DD/MM/YYYY) :\n"
                         ">>> ",
-            msg_error="Veuillez entrer une date au format valide: DD/MM/YYYY",
+            msg_error=f"{Fore.RED}Veuillez entrer une date au format valide: DD/MM/YYYY\n{Style.RESET_ALL}",
             value_type="date"
         )
 
         gender = self.get_user_entry(
             msg_display="Sexe (H ou F) :\n"
                         ">>> ",
-            msg_error="Veuillez entrer H ou F",
+            msg_error=f"{Fore.RED}Veuillez entrer H ou F\n{Style.RESET_ALL}",
             value_type="selection",
             assertions=["H", "h", "F", "f"]
         ).upper()
@@ -33,12 +36,12 @@ class CreatePlayer(View):
         rating = self.get_user_entry(
             msg_display="Classement :\n"
                         ">>> ",
-            msg_error="Veuillez entrer une valeur numérique valide",
+            msg_error=f"{Fore.RED}Veuillez entrer une valeur numérique valide\n{Style.RESET_ALL}",
             value_type="numeric"
         )
         # Plusieures entrées sont demandées à l'utilisateur pour la création d'un nouveau joueur.
 
-        print(f"{firstname} {name} a été créé")
+        print(f"{Fore.BLUE}{firstname} {name} a été créé\n{Style.RESET_ALL}")
         # Un message indiquant que le joueur a été créé est affiché.
 
         return {
@@ -83,7 +86,7 @@ class LoadPlayer(View):
             user_input = int(self.get_user_entry(
                 msg_display=f"{display_msg}\n"
                             ">>> ",
-                msg_error="Veuillez entrer un nombre entier.",
+                msg_error=f"{Fore.RED}Veuillez entrer un nombre entier.\n{Style.RESET_ALL}",
                 value_type="selection",
                 assertions=assertions
             ))
@@ -92,7 +95,7 @@ class LoadPlayer(View):
             if all_players[user_input - 1] not in serialized_loaded_players:
                 serialized_loaded_players.append(all_players[user_input - 1])
             else:
-                print("Joueur déjà chargé. Merci de choisir un autre joueur.")
+                print(f"{Fore.RED}Joueur déjà chargé. Merci de choisir un autre joueur.\n{Style.RESET_ALL}")
                 nb_players_to_load += 1
                 # Si le joueur sélectionné n'a pas encore été chargé, il est ajouté à la liste des joueurs chargés. Si
                 # le joueur a déjà été chargé, un message est affiché et le nombre de joueurs à charger est augmenté.

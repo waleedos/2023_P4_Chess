@@ -1,3 +1,6 @@
+from colorama import Fore, Style, init
+init()
+
 # Importation des fonctions save_db et load_tournament à partir du module database.py existant dans le dossier
 # "controller". Ces fonctions seront utilisées pour interagir avec la base de données du tournoi, avec les
 # joueurs et les classements.
@@ -31,14 +34,17 @@ class MainMenu(View):
 
         while True:
             user_input = self.get_user_entry(
-                msg_display="Faîtes votre choix :\n"
+                msg_display=f"{Fore.GREEN}************************************\n"
+                "       Faîtes votre choix :\n"
+                "************************************\n"
+                f"{Style.RESET_ALL}"
                             "0 - Nouveau tournoi\n"
                             "1 - Charger un tournoi\n"
                             "2 - Créer des nouveaux joueurs\n"
                             "3 - Listes (joueurs, tournois)\n"
                             "Q - Quitter\n"
                             ">>> ",
-                msg_error="Veuillez entrer une valeur valide",
+                msg_error=f"{Fore.RED}Veuillez entrer une valeur valide\n{Style.RESET_ALL}",
                 value_type="selection",
                 assertions=["0", "1", "2", "3", "Q", "q"]
             )
@@ -69,7 +75,7 @@ class MainMenu(View):
                     # Si l'utilisateur entre "2", il est invité à créer de nouveaux joueurs. L'utilisateur doit
                     # spécifier combien de joueurs il souhaite créer. Pour chaque joueur, un formulaire de création de
                     # joueur est affiché et les données du joueur sont ensuite enregistrées dans la base de données.
-                    msg_error="Veuillez entrer une valeur valide ",
+                    msg_error=f"{Fore.RED}Veuillez entrer une valeur valide\n{Style.RESET_ALL}",
                     value_type="numeric"
                 )
                 for i in range(user_input):
@@ -91,7 +97,7 @@ class MainMenu(View):
                                     "1 - Tournois\n"
                                     "r - Retour\n"
                                     ">>> ",
-                        msg_error="Veuillez faire un choix valide.",
+                        msg_error=f"{Fore.RED}Veuillez faire un choix valide.\n{Style.RESET_ALL}",
                         value_type="selection",
                         assertions=["0", "1", "r"]
                     )
@@ -107,12 +113,15 @@ class MainMenu(View):
                     elif user_input == "0":
                         while True:
                             user_input = self.get_user_entry(
-                                msg_display="Voir le classement:\n"
+                                msg_display=f"{Fore.GREEN}************************************\n"
+                                            "       Voir le classement :\n"
+                                            "************************************\n"
+                                            f"{Style.RESET_ALL}"
                                             "0 - Par rang\n"
                                             "1 - Par ordre alphabétique\n"
                                             "r - Retour\n"
                                             ">>> ",
-                                msg_error="Veuillez faire un choix valide.",
+                                msg_error=f"{Fore.RED}Veuillez faire un choix valide.\n{Style.RESET_ALL}",
                                 value_type="selection",
                                 assertions=["0", "1", "r", "R"]
                             )
@@ -153,11 +162,11 @@ class MainMenu(View):
             # Si l'utilisateur entre autre chose que les options proposées, le programme se termine.
 
         user_input = self.get_user_entry(
-            msg_display="Que faire ?\n"
+            msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
                         "0 - Jouer le tournoi\n"
                         "q - Quitter\n"
                         ">>> ",
-            msg_error="Veuillez entrer une valeur valide",
+            msg_error=f"{Fore.RED}Veuillez entrer une valeur valide\n{Style.RESET_ALL}",
             value_type="selection",
             assertions=["0", "q", "Q"]
         )
@@ -169,8 +178,9 @@ class MainMenu(View):
         # Une fois un tournoi choisi ou créé, l'utilisateur est invité à jouer le tournoi ou à quitter le programme.
         # Si l'utilisateur choisit de jouer, le tournoi commence.
 
-        print(f"Tournoi {tournament.name} terminé !")
+        print(f"{Fore.GREEN}Tournoi {tournament.name} terminé !")
         print("Voici les résultats : ")
+
         for i, player in enumerate(rankings):
             print(f"{str(i + 1)} - {player}")
         # Une fois le tournoi terminé, les résultats sont affichés.
@@ -181,7 +191,7 @@ class MainMenu(View):
                         "1 - Manuellement\n"
                         "Q - Quitter\n"
                         ">>> ",
-            msg_error="Veuillez entrer une valeur valide",
+            msg_error=f"{Fore.RED}Veuillez entrer une valeur valide\n{Style.RESET_ALL}",
             value_type="selection",
             assertions=["0", "1", "q", "Q"]
         )

@@ -1,3 +1,6 @@
+from colorama import Fore, Style, init
+init()
+
 # importation de la fonction check_date du module check_date depuis le dossier utils. Nous utiliserons Cette fonction*
 # pour vérifier si une chaîne de caractères correspond à un format de date valide.
 from utils.check_date import check_date

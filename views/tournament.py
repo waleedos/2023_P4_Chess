@@ -1,3 +1,6 @@
+from colorama import Fore, Style, init
+init()
+
 # Importation de la classe View du module view depuis le dossier views, pour qu'elle soit utilisée comme classe de base
 # pour d'autres classes dans ce module.
 from views.view import View
@@ -29,7 +32,7 @@ class CreateTournament(View):
         location = self.get_user_entry(
             msg_display="Lieu :\n"
                         ">>> ",
-            msg_error="Veuillez entrer un lieu valide",
+            msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
             value_type="string"
         )
         # Demande à l'utilisateur de saisir le nom et le lieu du tournoi qui seront ensuite stockés respectivement dans
@@ -43,10 +46,11 @@ class CreateTournament(View):
                         "1 - Blitz\n"
                         "2 - Coup Rapide\n"
                         ">>> ",
-            msg_error="Veuillez entrer 0, 1 ou 2",
+            msg_error=f"{Fore.RED}Veuillez entrer 0, 1 ou 2\n{Style.RESET_ALL}",
             value_type="selection",
             assertions=["0", "1", "2"]
         )
+
         if user_selection_time_control == "0":
             # vérifie si la valeur de user_selection_time_control est égale à "0". Si c'est le cas, la ligne suivante
             # sera exécutée.
@@ -62,7 +66,7 @@ class CreateTournament(View):
         nb_players = self.get_user_entry(
             msg_display="Nombre de joueurs :\n"
                         ">>> ",
-            msg_error="Veuillez entrer un nombre entier supérieur ou égal à 2",
+            msg_error=f"{Fore.RED}Veuillez entrer un nombre entier supérieur ou égal à 2\n{Style.RESET_ALL}",
             value_type="num_superior",
             default_value=2
         )
@@ -72,7 +76,7 @@ class CreateTournament(View):
         nb_rounds = self.get_user_entry(
             msg_display="Nombre de tours (4 par défaut) :\n"
                         ">>> ",
-            msg_error="Veuillez entrer 4 ou plus",
+            msg_error=f"{Fore.RED}Veuillez entrer 4 ou plus\n{Style.RESET_ALL}",
             value_type="num_superior",
             default_value=4
         )
@@ -119,7 +123,7 @@ class LoadTournament(View):
                 # un entier et stockée dans la variable user_input.
 
                 msg_display=build_selection['msg'] + ">>> ",
-                msg_error="Veuillez entrer un nombre entier",
+                msg_error=f"{Fore.RED}Veuillez entrer un nombre entier\n{Style.RESET_ALL}",
                 value_type="selection",
                 assertions=build_selection['assertions']
             ))

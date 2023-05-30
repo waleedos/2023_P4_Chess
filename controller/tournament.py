@@ -1,3 +1,5 @@
+from colorama import Fore, Style, init
+
 # Importation de laa classe Tournament du module tournament situé dans le dossier models
 from models.tournament import Tournament
 
@@ -16,6 +18,8 @@ from controller.player import create_player, update_rankings
 # Importation des fonctions save_db, update_db et load_player du module database situé dans le dossier controller.
 from controller.database import save_db, update_db, load_player
 
+init()
+
 
 def create_tournament():
 
@@ -25,11 +29,11 @@ def create_tournament():
     # affiché pour recueillir les entrées de l'utilisateur.
 
     user_input = menu.get_user_entry(
-        msg_display="Que faire ?\n"
+        msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
                     "0 - Créer des joueurs\n"
                     "1 - Charger des joueurs\n"
                     ">>> ",
-        msg_error="Entrez un choix valide",
+        msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
         value_type="selection",
         assertions=["0", "1"]
     )
@@ -41,7 +45,7 @@ def create_tournament():
 
     if user_input == "1":
 
-        print(f"Chargement de {str(user_entries['nb_players'])} joueurs")
+        print(f"{Fore.GREEN}Chargement de {str(user_entries['nb_players'])} joueurs\n{Style.RESET_ALL}")
 
         serialized_players = LoadPlayer().display_menu(
             nb_players_to_load=user_entries['nb_players']
@@ -55,7 +59,7 @@ def create_tournament():
         # l'ajoute à la liste players.
 
     else:
-        print(f"Création de {str(user_entries['nb_players'])} joueurs")
+        print(f"{Fore.GREEN}Création de {str(user_entries['nb_players'])} joueurs\n{Style.RESET_ALL}")
 
         while len(players) < user_entries['nb_players']:
             players.append(create_player())
@@ -63,9 +67,9 @@ def create_tournament():
         # puis continue à créer des joueurs jusqu'à atteindre le nombre requis.
 
     if not players:
-        print("Il n'y a aucun joueur, veuillez en créer")
+        print(f"{Fore.RED}Il n'y a aucun joueur, veuillez en créer\n{Style.RESET_ALL}")
         print()
-        print(f"Création de {str(user_entries['nb_players'])} joueurs")
+        print(f"{Fore.GREEN}Création de {str(user_entries['nb_players'])} joueurs\n{Style.RESET_ALL}")
         while len(players) < user_entries['nb_players']:
             players.append(create_player())
         # Si aucun joueur n'a été créé ou chargé, le programme informe l'utilisateur qu'il doit en créer, puis crée
@@ -99,7 +103,7 @@ def play_tournament(tournament, new_tournament_loaded=False):
 
     menu = View()
     print()
-    print(f"Début du tournoi {tournament.name}")
+    print(f"{Fore.BLUE}Début du tournoi {tournament.name}\n{Style.RESET_ALL}")
     print()
     # Un nouvel objet View est instancié pour interagir avec l'utilisateur. Ensuite, le nom du tournoi est affiché
     # pour indiquer le début du tournoi.
@@ -126,21 +130,23 @@ def play_tournament(tournament, new_tournament_loaded=False):
             tournament.create_round(round_number=i+a)
 
             current_round = tournament.list_round[-1]
-            print(f"{current_round.start_date} : Début du {current_round.name}")
+            print(f"{Fore.BLUE}{current_round.start_date} : Début du {current_round.name}\n{Style.RESET_ALL}")
         # Pour chaque round à jouer, un nouveau round est créé et le round actuel est récupéré. Ensuite, le début du
         # round est annoncé.
 
             while True:
                 print()
                 user_input = menu.get_user_entry(
-                    msg_display="Faîtes votre choix :\n"
+                    msg_display=f"{Fore.GREEN}************************************\n"
+                    "       Faîtes votre choix :\n"
+                    "************************************\n{Style.RESET_ALL}"
                                 "0 - Round suivant\n"
                                 "1 - Voir les classements\n"
                                 "2 - Mettre à jour les classements\n"
                                 "3 - Sauvegarder le tournoi\n"
                                 "Q - Quitter\n"
                                 ">>> ",
-                    msg_error="Veuillez faire un choix.",
+                    msg_error=f"{Fore.RED}Veuillez faire un choix.\n{Style.RESET_ALL}",
                     value_type="selection",
                     assertions=["0", "1", "2", "3", "q", "Q"]
                 )
@@ -153,7 +159,7 @@ def play_tournament(tournament, new_tournament_loaded=False):
                 # interne se termine, passant au round suivant.
 
                 elif user_input == "1":
-                    print(f"Classement du tournoi {tournament.name} :\n")
+                    print(f"{Fore.BLUE}Classement du tournoi {tournament.name} :\n{Style.RESET_ALL}")
                     for j, player in enumerate(tournament.get_rankings()):
                         print(f"{str(j + 1)} - {player}")
                 # Si l'utilisateur choisit "1", le classement du tournoi est affiché.
@@ -162,7 +168,7 @@ def play_tournament(tournament, new_tournament_loaded=False):
                     for player in tournament.players:
                         rank = menu.get_user_entry(
                             msg_display=f"Rang de {player}:\n>>> ",
-                            msg_error="Veuillez entrer un nombre entier.",
+                            msg_error=f"{Fore.RED}Veuillez entrer un nombre entier\n{Style.RESET_ALL}",
                             value_type="numeric"
                         )
                         update_rankings(player, rank, score=False)
