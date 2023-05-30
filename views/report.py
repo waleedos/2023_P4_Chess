@@ -1,6 +1,3 @@
-from colorama import Fore, Style, init
-init()
-
 # Importation de la fonction  load_db du module database depuis le dossier controller, qui est utilisée pour lire des
 # données à partir de la base de données.
 from controller.database import load_db
@@ -11,6 +8,9 @@ from views.view import View
 
 # Importation de la fonction itemgetter du module operator qui facilite le tri des éléments dans une collection.
 from operator import itemgetter
+
+from colorama import Fore, Style, init
+init()
 
 
 class Report(View):
@@ -73,7 +73,7 @@ class Report(View):
                 # variable selected_player.
 
                 while True:
-                    print(f"{Fore.BLUE}Détails du joueur {selected_player['name']}:\n{Style.RESET_ALL}")         
+                    print(f"{Fore.BLUE}\nDétails du joueur {selected_player['name']}:\n{Style.RESET_ALL}")
                     print(f"Classement: {selected_player['rating']}\n"
                           f"Score total: {selected_player['total_score']}\n"
                           f"Nom: {selected_player['name']}\n"
@@ -106,7 +106,7 @@ class Report(View):
 
         build_selection = self.build_selection(
             iterable=self.tournaments,
-            display_msg="Voir les détails d'un tournoi :\n",
+            display_msg=f"{Fore.BLUE}Voir les détails d'un tournoi :\n{Style.RESET_ALL}",
             assertions=['r']
         )
         # Appel de la méthode build_selection avec la liste de tournois, un message à afficher et une liste
@@ -142,7 +142,7 @@ class Report(View):
                 # indice pour sélectionner un tournoi dans la liste des tournois.
 
                 while True:
-                    print(f"{Fore.BLUE}Détails du tournoi {selected_tournament['name']}\n{Style.RESET_ALL}"
+                    print(f"{Fore.BLUE}\nDétails du tournoi {selected_tournament['name']}\n{Style.RESET_ALL}"
                           f"Nom: {selected_tournament['name']}\n"
                           f"Lieu: {selected_tournament['location']}\n"
                           f"Date: {selected_tournament['date']}\n"
@@ -233,7 +233,7 @@ class Report(View):
                 # pour indexer la liste des tours pour sélectionner un tour.
 
                 while True:
-                    print(f"Détails du round {selected_round['name']}\n"
+                    print(f"{Fore.BLUE}\nDétails du round {selected_round['name']}:\n{Style.RESET_ALL}"
                           f"Nom: {selected_round['name']}\n"
                           f"Nombre de matchs: {len(selected_round['matchs'])}\n"
                           f"Date de début: {selected_round['start_date']}\n"
@@ -285,7 +285,7 @@ class Report(View):
                             # utilisé pour indexer la liste des matchs pour sélectionner un match.
 
                             while True:
-                                print(f"Détails du {selected_match['name']}\n"
+                                print(f"{Fore.BLUE}\nDétails du {selected_match['name']}:\n{Style.RESET_ALL}"
                                       f"Joueur 1 : " +
                                       f"{selected_match['player_1']['name']} ({selected_match['score_player_1']} pts)\n"
                                       f"Joueur 2 : " +
