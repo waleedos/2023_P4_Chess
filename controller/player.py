@@ -1,3 +1,5 @@
+from colorama import Fore, Style, init
+
 # Importation des 2 fonctions save_db et update_player_rank du module database situé dans le dossier controller.
 from controller.database import save_db, update_player_rank
 
@@ -6,6 +8,8 @@ from models.player import Player
 
 # Importation de la classe CreatePlayer du module player situé dans le dossier views.
 from views.player import CreatePlayer
+
+init()
 
 
 def create_player():
@@ -33,9 +37,12 @@ def update_rankings(player, rank, score=True):
         player.total_score += player.tournament_score
     player.rating = rank
     serialized_player = player.get_serialized_player()
-    print(serialized_player['name'])
     update_player_rank("players", serialized_player)
-    print(f"Modification du rang de {player}:\nScore total: {player.total_score}\nClassement: {player.rating}")
+    print(
+        f"Modification du rang de {player.name} {player.firstname}:\n"
+        f"{Fore.GREEN}Score total: {player.total_score}\n{Style.RESET_ALL}"
+        f"Classement: {player.rating}\n"
+    )
     # La fonction update_rankings est définie. Elle prend les paramètres player, rank et score (avec une valeur par
     # défaut de True). Selon la valeur de score, le score du joueur est ajouté à son score total. Le classement du
     # joueur (rating) est mis à jour avec la valeur rank. L'objet Player est sérialisé en utilisant la méthode

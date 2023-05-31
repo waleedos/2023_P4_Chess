@@ -1,5 +1,4 @@
 from colorama import Fore, Style, init
-init()
 
 # Importation de la classe View du module view depuis le dossier views, pour qu'elle soit utilisée comme classe de base
 # pour d'autres classes dans ce module.
@@ -12,6 +11,8 @@ from utils.timestamp import get_timestamp
 # Importation de la fonction load_db du module database depuis le dossier controller et qui servira pour charger les
 # données depuis la base de données.
 from controller.database import load_db
+
+init()
 
 
 class CreateTournament(View):

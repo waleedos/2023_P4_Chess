@@ -1,6 +1,10 @@
 # importe la classe View à partir du module view. Cette classe est utilisée pour afficher des informations et
 # interagir avec l'utilisateur.
+from colorama import Fore, Style, init
 from views.view import View
+
+
+init()
 
 
 class Match:
@@ -37,13 +41,13 @@ class Match:
     def play_match(self):
         print()
         winner = View().get_user_entry(
-            msg_display=f"{self.player_1.firstname} VS {self.player_2.firstname}\n"
-                        "Gagnant ?\n"
+            msg_display=f"{Fore.RED}{self.player_1.firstname} VS {self.player_2.firstname}\n{Style.RESET_ALL}"
+                        "\nGagnant ?\n"
                         f"0 - {self.player_1.firstname}\n"
                         f"1 - {self.player_2.firstname}\n"
                         "2 - Égalité\n"
                         ">>> ",
-            msg_error="Veuillez entrer 0, 1 ou 2.",
+            msg_error=f"\n{Fore.YELLOW}Veuillez entrer 0, 1 ou 2.\n{Style.RESET_ALL}",
             value_type="selection",
             assertions=["0", "1", "2"]
         )

@@ -1,9 +1,13 @@
+from colorama import Fore, Style, init
+
 # importation de la fonction get_timestamp du module timestamp situé dans le dossier utils. Cette fonction est
 # utilisée pour obtenir le timestamp actuel.
 from utils.timestamp import get_timestamp
 
 # importation de la classe Match du module match situé dans le dossier models.
 from models.match import Match
+
+init()
 
 
 class Round:
@@ -46,8 +50,8 @@ class Round:
 
     def mark_as_complete(self):
         self.end_date = get_timestamp()
-        print(f"{self.end_date} : {self.name} terminé.")
-        print("Rentrez les résultats des matchs:")
+        print(f"{Fore.BLUE}{self.end_date} : {self.name} terminé.\n{Style.RESET_ALL}")
+        print(" Rentrez les résultats des matchs:")
         for match in self.matchs:
             match.play_match()
         # Cette méthode mark_as_complete est utilisée pour marquer le tour comme terminé. Elle met à jour l'attribut

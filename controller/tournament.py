@@ -18,6 +18,7 @@ from controller.player import create_player, update_rankings
 # Importation des fonctions save_db, update_db et load_player du module database situé dans le dossier controller.
 from controller.database import save_db, update_db, load_player
 
+
 init()
 
 
@@ -103,7 +104,7 @@ def play_tournament(tournament, new_tournament_loaded=False):
 
     menu = View()
     print()
-    print(f"{Fore.BLUE}Début du tournoi {tournament.name}\n{Style.RESET_ALL}")
+    print(f"{Fore.RED}  Début du tournoi {tournament.name}\n{Style.RESET_ALL}")
     print()
     # Un nouvel objet View est instancié pour interagir avec l'utilisateur. Ensuite, le nom du tournoi est affiché
     # pour indiquer le début du tournoi.
@@ -138,8 +139,9 @@ def play_tournament(tournament, new_tournament_loaded=False):
                 print()
                 user_input = menu.get_user_entry(
                     msg_display=f"{Fore.GREEN}************************************\n"
-                    "       Faîtes votre choix :\n"
-                    "************************************\n{Style.RESET_ALL}"
+                                "       Faîtes votre choix :\n"
+                                "************************************\n"
+                                f"{Style.RESET_ALL}"
                                 "0 - Round suivant\n"
                                 "1 - Voir les classements\n"
                                 "2 - Mettre à jour les classements\n"

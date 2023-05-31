@@ -1,10 +1,11 @@
 from colorama import Fore, Style, init
-init()
 
 # importation de la classe View depuis le module views.view et la fonction load_db depuis le module
 # controller.database.
 from views.view import View
 from controller.database import load_db
+
+init()
 
 
 class CreatePlayer(View):
@@ -17,7 +18,7 @@ class CreatePlayer(View):
 
         firstname = input("Prénom du joueur :\n"
                           ">>> ")
-        
+
         birthday = self.get_user_entry(
             msg_display="Date de naissance (format DD/MM/YYYY) :\n"
                         ">>> ",
