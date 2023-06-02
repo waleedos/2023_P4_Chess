@@ -38,7 +38,7 @@ class Report(View):
                                                assertions=["r"])
         # Ceci appelle la méthode build_selection avec trois arguments : la liste de joueurs, un message à afficher et
         # une liste d'assertions. On suppose que build_selection retourne un dictionnaire contenant une version mise en
-        # forme de la liste de joueurs et la liste d'assertions. Ce dictionnaire est stocké dans la variable
+        # forme de la liste des joueurs et la liste d'assertions. Ce dictionnaire est stocké dans la variable
         # build_selection.
 
         while True:
@@ -46,8 +46,8 @@ class Report(View):
             # commencement d'une boucle infinie et affichage du message "Classement :".
 
             user_input = self.get_user_entry(
-                msg_display=build_selection['msg'] + "r - Retour\n"
-                                                     ">>> ",
+                msg_display=build_selection['msg'] + f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                                     "\n>>> ",
                 msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                 value_type="selection",
                 assertions=build_selection['assertions']
@@ -87,8 +87,8 @@ class Report(View):
 
                     user_input = self.get_user_entry(
                         msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
-                                    "r - Retour\n"
-                                    ">>> ",
+                                    f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                    "\n>>> ",
                         msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                         value_type="selection",
                         assertions=["r"]
@@ -124,8 +124,8 @@ class Report(View):
             # Si la liste des tournois n'est pas vide, alors le message "Tournois :" est affiché.
 
             user_input = self.get_user_entry(
-                msg_display=build_selection['msg'] + "r - Retour\n"
-                                                     ">>> ",
+                msg_display=build_selection['msg'] + f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                                     "\n>>> ",
                 msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                 value_type="selection",
                 assertions=build_selection['assertions']
@@ -153,9 +153,10 @@ class Report(View):
 
                     user_input = self.get_user_entry(
                         msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
-                                    "0 - Voir les participants\n"
-                                    "1 - Voir les tours\n"
-                                    "r - Retour\n>>> ",
+                                    "[0] - Voir les participants\n"
+                                    "[1] - Voir les tours\n"
+                                    f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                    "\n>>> ",
                         msg_error="Veuillez entrer une sélection valide",
                         value_type="selection",
                         assertions=["0", "1", "2", "r", "R"]
@@ -171,10 +172,10 @@ class Report(View):
                         while True:
                             user_input = self.get_user_entry(
                                 msg_display=f"{Fore.GREEN}Type de classement:\n{Style.RESET_ALL}"
-                                            "0 - Par rang\n"
-                                            "1 - Par ordre alphabétique\n"
-                                            "r - Retour\n"
-                                            ">>> ",
+                                            "[0] - Par rang\n"
+                                            "[1] - Par ordre alphabétique\n"
+                                            f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                            "\n>>> ",
                                 msg_error=f"{Fore.RED}Veuillez entrer une sélection valide\n{Style.RESET_ALL}",
                                 value_type="selection",
                                 assertions=["0", "1", "r"]
@@ -243,9 +244,9 @@ class Report(View):
 
                     user_input = self.get_user_entry(
                         msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
-                                    "0 - Voir les matchs\n"
-                                    "r - Retour\n"
-                                    ">>> ",
+                                    "[0] - Voir les matchs\n"
+                                    f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                    "\n>>> ",
                         msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                         value_type="selection",
                         assertions=["0", "r"]
@@ -268,8 +269,8 @@ class Report(View):
 
                         print("Matchs:")
                         user_input = self.get_user_entry(
-                            msg_display=build_selection['msg'] + "r - Retour\n"
-                                                                 ">>> ",
+                            msg_display=build_selection['msg'] + f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                                                 "\n>>> ",
                             msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                             value_type="selection",
                             assertions=build_selection['assertions']
@@ -297,8 +298,8 @@ class Report(View):
 
                                 user_input = self.get_user_entry(
                                     msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
-                                                "r - Retour\n"
-                                                ">>> ",
+                                                f"{Fore.YELLOW}[r] - Retour\n{Style.RESET_ALL}"
+                                                "\n>>> ",
                                     msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
                                     value_type="selection",
                                     assertions=["r"]

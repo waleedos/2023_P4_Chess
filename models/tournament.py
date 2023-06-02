@@ -16,12 +16,6 @@ class Tournament:
         self.rounds_number = rounds_number
         self.description = description
         self.list_round = []
-        """
-        Création de la classe "Tournament" avec le constructeur __init__. Il prend les paramètres name, location,
-        date, time_control, players, rounds_number et description. Les attributs de l'objet Tournament sont
-        initialisés avec les valeurs correspondantes fournies en paramètre. La liste list_round est initialisée
-        comme une liste vide.
-        """
 
     def __str__(self):
         return f"{self.name} qui a eu lieu le {self.date}"

@@ -31,9 +31,9 @@ def create_tournament():
 
     user_input = menu.get_user_entry(
         msg_display=f"{Fore.GREEN}Que faire ?\n{Style.RESET_ALL}"
-                    "0 - Créer des joueurs\n"
-                    "1 - Charger des joueurs\n"
-                    ">>> ",
+                    "[0] - Créer des joueurs\n"
+                    "[1] - Charger des joueurs\n"
+                    "\n>>> ",
         msg_error=f"{Fore.RED}Veuillez faire un choix valide\n{Style.RESET_ALL}",
         value_type="selection",
         assertions=["0", "1"]
@@ -142,12 +142,12 @@ def play_tournament(tournament, new_tournament_loaded=False):
                                 "       Faîtes votre choix :\n"
                                 "************************************\n"
                                 f"{Style.RESET_ALL}"
-                                "0 - Round suivant\n"
-                                "1 - Voir les classements\n"
-                                "2 - Mettre à jour les classements\n"
-                                "3 - Sauvegarder le tournoi\n"
-                                "Q - Quitter\n"
-                                ">>> ",
+                                "[0] - Round suivant\n"
+                                "[1] - Voir les classements\n"
+                                "[2] - Mettre à jour les classements\n"
+                                "[3] - Sauvegarder le tournoi\n"
+                                f"{Fore.RED}[Q] - Quitter\n{Style.RESET_ALL}"
+                                "\n>>> ",
                     msg_error=f"{Fore.RED}Veuillez faire un choix.\n{Style.RESET_ALL}",
                     value_type="selection",
                     assertions=["0", "1", "2", "3", "q", "Q"]

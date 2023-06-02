@@ -37,3 +37,7 @@ class Player:
         # tournoi) sont ajoutées au dictionnaire serialized_player, puis ce dictionnaire est renvoyé.
 
         return serialized_player
+
+    def display_all_info(self):
+        return f"Name: {self.name}\nFirstname: {self.firstname}\nBirthday: {self.birthday}\nGender: {self.gender}\
+            \nRating: {self.rating}\nTotal Score: {self.total_score}\nTournament Score: {self.tournament_score}"
