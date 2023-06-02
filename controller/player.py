@@ -53,13 +53,6 @@ def update_rankings(player, rank, score=True):
     # avec le nom du joueur, son score total et son classement.
 
 
-"""def display_players():
-    players = load_db("players")  # Charger les données des joueurs de la base de données.
-    for serialized_player in players:  # Parcourir chaque joueur sérialisé dans les données chargées.
-        player = load_player(serialized_player)  # Désérialiser le joueur.
-        print(player.display_all_info())  # Afficher toutes les informations du joueur."""
-
-
 def display_players(sort_by="name", ascending=True):
     players = load_db("players")  # Charger les données des joueurs de la base de données.
 
