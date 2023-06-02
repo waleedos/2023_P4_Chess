@@ -1,6 +1,6 @@
 ![Chess Master](https://raw.githubusercontent.com/waleedos/2023_P4_Chess/main/Documents/chess.png)
 
-# Développez un programme logiciel en Python : Chess Tournament
+## Développez un programme logiciel en Python : Chess Tournament
 
 ## Préambule
 Étant un développeur junior depuis deux mois et travaillant en freelance pour écrire des scripts simples afin d’aider les petites entreprises locales à gérer leur inventaire, une amie me suggère d’écrire un outil qui permette de gérer les tournois pour aider un club d’Échecs Local, mais qui fonctionne hors ligne
