@@ -13,6 +13,7 @@ env/
 venv/
 ENV/
 VENV/
+.vscode
 
 .idea
 
